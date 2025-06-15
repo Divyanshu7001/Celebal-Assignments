@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 function getTomorrowStr() {
   const d = new Date();
@@ -16,6 +17,7 @@ function TodoForm({ onAddTask, error }) {
     if (onAddTask(input, dueDate)) {
       setInput("");
       setDueDate(getTomorrowStr());
+      toast.success("Task added successfully 🙌");
     }
   };
 
@@ -83,6 +85,7 @@ function TodoForm({ onAddTask, error }) {
             onFocus={(e) => e.target.showPicker()}
           />
         </div>
+        
         <button type="submit" className="submit-btn">
           Add Task
         </button>
